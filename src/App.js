@@ -8,8 +8,7 @@ import CharacterList from './components/character-list';
 function App() {
   return (
     <Provider store={store}>
-      <CharacterList>
-      </CharacterList>
+      <CharacterList />
     </Provider>
     
   );

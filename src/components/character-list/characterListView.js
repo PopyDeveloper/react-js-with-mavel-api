@@ -1,8 +1,8 @@
 import React from 'react';
-import { List, Card, CardHeader, ListItem, CardMedia, CardActions, IconButton} from '@material-ui/core';
+import { List, Card, CardHeader, ListItem, CardMedia, CardActions, Fab, Icon} from '@material-ui/core';
+import Edit from '@material-ui/icons/Edit';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 
 
 
@@ -15,17 +15,17 @@ const styles = theme => ({
         alignItems: 'center'
     },
     media: {
-        // height: 0,
         paddingTop: 300, 
         width: 400
+    },
+    fab: {
+        margin: theme.spacing.unit,
     },
 });
 
 
 const CharacterListView = (props) => {
-    const {characters, classes } = props;
-
-    console.info(props)
+    const {characters, classes, editFn, showDetail } = props;
     
     return (
         <div className={classes.root}>
@@ -38,23 +38,22 @@ const CharacterListView = (props) => {
                                         <CardHeader
                                         title={character.name}
                                         />
-                                <Link to={`/character/${character['id']}`}>
                                         <CardMedia
+                                        onClick={() => showDetail(character['id'])}
                                         className={classes.media}
                                         image={`${character['thumbnail']['path']}.${character['thumbnail']['extension']}`}
                                         />
-                                    </Link>
                                     <CardActions className={classes.actions} disableActionSpacing>
-                                        <IconButton aria-label="Edit character">
-                                           Editar
-                                        </IconButton>
+                                    <Fab onClick={() => editFn(character)} color="secondary" aria-label="Edit" className={classes.fab}>
+                                        <Icon><Edit></Edit></Icon>
+                                    </Fab>
                                     </CardActions>
                                 </Card>
                             </ListItem>
                         </List>                    
                     )
                 ) : (
-                   <p>Carregando...</p>
+                   <p>CARREGANDO...</p>
                 )
             }                
             </div>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import DetailCharacterController from './components/datails-character'
+import EditCharacterController from './components/edit-character'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import history from './history';
@@ -12,6 +13,7 @@ ReactDOM.render(
     <Switch >
         <Route path="/" exact={true} component={App} />
         <Route path="/character/:id" component={DetailCharacterController} />
+        <Route path="/editCharacter" component={EditCharacterController} />
     </Switch>
 </BrowserRouter>
 
