@@ -12,9 +12,11 @@ Para rodar o projeto baixe o repositorio e execute:
 
 Tasks
 
-- Funcionais
+---
 
-[] Listagem de personagens da Marvel
-[] Listagem das series de cada personagem
-[] Editar personagem
-[] Mostrar listagem dos seus personagens editados
+Funcionais
+
+- Listagem de personagens da Marvel
+- Listagem das series de cada personagem
+- Editar personagem
+- Mostrar listagem dos seus personagens editados
