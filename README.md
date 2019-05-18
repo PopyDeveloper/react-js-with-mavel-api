@@ -6,5 +6,5 @@ Lista e edição de personagens da MARVEL, utilizando a API
 
 Para rodar o projeto baixe o repositorio e execute:
 
-## npm install
-## npm start
+# npm install
+# npm start
