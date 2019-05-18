@@ -6,6 +6,10 @@ Lista e edição de personagens da MARVEL, utilizando a API
 
 Para rodar o projeto baixe o repositorio e execute:
 
+> https://github.com/PopyDeveloper/react-js-with-mavel-api.git
+
+> cd react-js-with-mavel-api
+
 > npm install
 
 > npm start
