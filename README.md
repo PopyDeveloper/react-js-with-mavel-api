@@ -7,4 +7,14 @@ Lista e edição de personagens da MARVEL, utilizando a API
 Para rodar o projeto baixe o repositorio e execute:
 
 > npm install
+
 > npm start
+
+Tasks
+
+- Funcionais
+
+[] Listagem de personagens da Marvel
+[] Listagem das series de cada personagem
+[] Editar personagem
+[] Mostrar listagem dos seus personagens editados
