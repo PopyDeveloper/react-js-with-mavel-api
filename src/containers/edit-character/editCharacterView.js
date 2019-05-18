@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { reduxForm } from 'redux-form';
 import classNames from 'classnames';
 import { TextField, Avatar, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Save } from '@material-ui/icons'
-import { connect } from 'react-redux'
 
 
 const styles = theme => ({
@@ -40,7 +38,7 @@ let EditCharacterFormView = props => {
     const { handlerName, handlerDescription, handleSubmit, classes  } = props
 
     return (
-        <form className={classes.form} onSubmit={handleSubmit}>
+        <form className={classes.form} >
 
         <Avatar alt={props['name']} className={classes.avatar} src={props['image']} />
           
@@ -50,7 +48,7 @@ let EditCharacterFormView = props => {
             label="Nome"
             className={classes.input}
             value={props['name']}
-            onChange={(e) => handlerName(e)}
+            onChange={handlerName}
             margin="normal"
           />
 
@@ -65,17 +63,13 @@ let EditCharacterFormView = props => {
             margin="normal"
           />
 
-      <Button variant="contained" size="small" type="submit" className={classes.button}>
-              <Save className={classNames(classes.leftIcon, classes.iconSmall)} />
-              Save
+      <Button variant="contained" size="small" onClick={handleSubmit} className={classes.button}>
+            <Save className={classNames(classes.leftIcon, classes.iconSmall)} />
+            Save
       </Button>
         </form>
     )
 }
-
-// EditCharacterFormView = reduxForm({
-//   form: 'editCharacterForm'
-// })(EditCharacterFormView)
 
 EditCharacterFormView.propTypes = {
   classes: PropTypes.object.isRequired,

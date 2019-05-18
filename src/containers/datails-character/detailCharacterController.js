@@ -1,19 +1,18 @@
 import React, {Component} from 'react'
 import DetailsCharacterView from './detailsCharacterView';
 import { getSeries } from '../../services/data/data.service';
+import { connect } from 'react-redux'
 
 class DetailsCharacterController extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            series: []
-        };
+        console.info(this.props)
     }
 
     componentDidMount() {
-        const id = Number(this.props['match']['params']['id'])
+        const { id } = this.props;
         this.loadSeries(id)
     }
 
@@ -30,4 +29,8 @@ class DetailsCharacterController extends Component {
     }
 }
 
-export default DetailsCharacterController;
+const mapStateToProps = state => ({
+    id: state
+});
+
+export default connect(mapStateToProps)(DetailsCharacterController);

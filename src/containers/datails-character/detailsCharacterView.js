@@ -19,7 +19,7 @@ const styles = theme => ({
 });
 
 const DetailsCharacterView = (props) => {
-    
+    console.log(props, 'MY VIEW')
     const { series, classes } = props;
     return (
         
@@ -27,7 +27,7 @@ const DetailsCharacterView = (props) => {
             {
                 series ? (
                     series.map(serie => 
-                        <List key={serie['id']}>
+                        <List key={serie['name']}>
                             <ListItem >
 
                                 <Card className={classes.card}>
