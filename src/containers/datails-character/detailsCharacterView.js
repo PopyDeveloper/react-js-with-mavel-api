@@ -6,10 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
     root: {
         width: '100%',
-        // backgroundColor: theme.palette.background.paper,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
     },
     gridList: {
         width: '100$',
@@ -34,14 +32,30 @@ const styles = theme => ({
         height: 'inherit !important' 
         ,width: 'inherit !important'
     },
+    load:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });
 
 const DetailsCharacterView = (props) => {
     console.log(props, 'MY VIEW')
-    const { series, classes } = props;
+    const { series, classes, details } = props;
     return (
         
         <div className={classes.root}>
+            {
+                details &&
+                <GridList cellHeight={160} className={classes.gridList}>
+                    <GridListTile className={classes.titleGrid}>
+                        <ListSubheader component="div">Name: {details[0]['name']}</ListSubheader>
+                        <ListSubheader component="div">Descrição: {details[0]['description']}</ListSubheader>
+                        
+                    </GridListTile>
+                </GridList>  
+
+            }    
             {
                 series &&
                     <GridList cellHeight={160} cols={4} className={classes.gridList}>
@@ -63,7 +77,7 @@ const DetailsCharacterView = (props) => {
                                 </Card>
                     </GridListTile>)      
                     ) : (
-                        <p>CARREGANDO...</p>
+                        <p className={classes.load}>CARREGANDO...</p>
                     )
                 }
                 </GridList>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAllCharacters, loadMoreCharacters } from '../../services/data/data.service';
+import { getAllCharacters } from '../../services/data/data.service';
 import CharacterListView from './characterListView';
 import { withRouter } from 'react-router-dom' 
 import { connect } from 'react-redux'
@@ -37,21 +37,6 @@ class CharacterListController extends Component {
                 })
             }
         }) 
-    }
-
-    loadMoreCharacters = async () => {
-        console.log('oi')
-        await loadMoreCharacters()
-            .then(data => {
-                if(data) {
-                    this.setState({
-                        characters: {
-                            ...this.state.characters,
-                            data
-                        }
-                    })
-                }
-            })
     }
 
     render() {

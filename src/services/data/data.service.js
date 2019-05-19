@@ -14,21 +14,19 @@ export async function getAllCharacters() {
     return characters;
 }
 
-export async function loadMoreCharacters() {
-    const timestamp = Number(new Date())
-    const offset = 12;
-
-    const characters = await fetch(`https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=${offset+offset}&offset=${offset}&apikey=${PUBLIC_KEY}&hash=${gerateHash()}`)
-        .then(response => response.json())
-        .then(responseJson => responseJson['data']['results'])
-        .catch(err => console.error('Erro ao carregar dados da api: ', err));
-     
-    return characters;
-}
-
 export async function getSeries (id) {
   
     const series = await fetch(`https://gateway.marvel.com:443/v1/public/characters/${id}/series?apikey=${PUBLIC_KEY}&hash=${gerateHash()}`)
+        .then(response => response.json())
+        .then(responseJson => responseJson['data']['results'])
+        .catch(err => console.error('Erro ao carregar dados da api: ', err));
+
+    return series;
+}
+
+export async function getDetailsCharacter (id) {
+  
+    const series = await fetch(`https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=${PUBLIC_KEY}&hash=${gerateHash()}`)
         .then(response => response.json())
         .then(responseJson => responseJson['data']['results'])
         .catch(err => console.error('Erro ao carregar dados da api: ', err));

@@ -70,6 +70,9 @@ const CharacterListView = (props) => {
                         
                             <GridListTile className={classes.li} key={character['id']}>
                                 <Card className={classes.card}>
+                                <Button onClick={() => editChar(character)} color="secondary" aria-label="Edit" className={classes.button}>
+                                    Editar
+                                </Button>
                                         
                                         <CardMedia
                                         onClick={() => showDetail(character['id'])}
@@ -79,9 +82,6 @@ const CharacterListView = (props) => {
                                         className={classes.titleCard}
                                         title={character.name}
                                         />
-                                         <Button onClick={() => editChar(character)} color="secondary" aria-label="Edit" className={classes.button}>
-                                            Editar
-                                        </Button>
                                         </CardMedia>        
                                 </Card>
                             </GridListTile> 

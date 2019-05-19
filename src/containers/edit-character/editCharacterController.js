@@ -37,6 +37,8 @@ class EditCharacterController extends Component {
             localStorage.setItem(`${this.state['name']}${Number(new Date()).toString()}`, JSON.stringify(this.state))
             console.log(this.state)
         }
+
+        this.props.history.goBack()
     }
 
     _onChangeName = e => {
