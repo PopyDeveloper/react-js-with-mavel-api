@@ -1,20 +1,38 @@
 import React from 'react';
-import { List, ListItem, Card, CardHeader, CardMedia} from '@material-ui/core';
+import { GridList, ListSubheader, Card, CardHeader, CardMedia, GridListTile} from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     root: {
         width: '100%',
-        backgroundColor: theme.palette.background.paper,
+        // backgroundColor: theme.palette.background.paper,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+    },
+    gridList: {
+        width: '100$',
+        height: '100%',
+        marginTop: 20,
+        display: 'flex',
+        justifyContent: 'center'
+    },
+    titleGrid: {
+        width: '100% !important',
+        height: '100px !important',
+        padding: '10px !important'
+    },
+    titleCard: {
+        backgroundColor: 'rgba(199,199,199,0.5)',
+        
     },
     media: {
-        height: 0,
         paddingTop: 300, 
-        width: '100%'
+    },
+    li: {
+        height: 'inherit !important' 
+        ,width: 'inherit !important'
     },
 });
 
@@ -25,10 +43,14 @@ const DetailsCharacterView = (props) => {
         
         <div className={classes.root}>
             {
-                series ? (
+                series &&
+                    <GridList cellHeight={160} cols={4} className={classes.gridList}>
+                        <GridListTile className={classes.titleGrid}>
+                            <ListSubheader component="div">SERIES</ListSubheader>
+                        </GridListTile>
+                {   series.length > 0 ? (
                     series.map(serie => 
-                        <List key={serie['name']}>
-                            <ListItem >
+                        <GridListTile className={classes.li}  key={serie['id']}>
 
                                 <Card className={classes.card}>
                                         <CardHeader
@@ -39,19 +61,15 @@ const DetailsCharacterView = (props) => {
                                         image={`${serie['thumbnail']['path']}.${serie['thumbnail']['extension']}`}
                                         />
                                 </Card>
-                               
-                            </ListItem> 
-                        </List> 
+                    </GridListTile>)      
+                    ) : (
+                        <p>CARREGANDO...</p>
                     )
-                ) : (
-                    <p>CARREGANDO...</p>
-                )
-                
-                                       
-                
-        }
+                }
+                </GridList>
+            } 
         </div>
-    );
+    )
 }
 
 DetailsCharacterView.propTypes = {
