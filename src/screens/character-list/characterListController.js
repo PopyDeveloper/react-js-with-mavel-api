@@ -37,6 +37,7 @@ class CharacterListController extends Component {
                 })
             }
         }) 
+
     }
 
     render() {
