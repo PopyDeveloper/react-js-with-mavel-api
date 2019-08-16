@@ -6,7 +6,7 @@ const PRIVATE_KEY = '27c7d5f0dc43a13f7716df100a80b6f42a8b7ce8';
 export async function getAllCharacters() {
     const timestamp = Number(new Date())
 
-    const characters = await fetch(`https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=100&apikey=${PUBLIC_KEY}&hash=${gerateHash()}`)
+    const characters = await fetch(`https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=50&apikey=${PUBLIC_KEY}&hash=${gerateHash()}`)
         .then(response => response.json())
         .then(responseJson => responseJson['data']['results'])
         .catch(err => console.error('Erro ao carregar dados da api: ', err));
