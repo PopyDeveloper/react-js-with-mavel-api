@@ -4,23 +4,3 @@ Lista e edição de personagens da MARVEL, utilizando a API
 
 ### https://developer.marvel.com
 
-Para rodar o projeto baixe o repositorio e execute:
-
-> https://github.com/PopyDeveloper/react-js-with-mavel-api.git
-
-> cd react-js-with-mavel-api
-
-> npm install
-
-> npm start
-
-Tasks
-
----
-
-Funcionais
-
-- Listagem de personagens da Marvel
-- Listagem das series de cada personagem
-- Editar personagem
-- Mostrar listagem dos seus personagens editados
