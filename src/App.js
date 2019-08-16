@@ -1,11 +1,17 @@
 import React from 'react';
-import './App.css';
-import CharacterList from './screens/character-list';
 
-function App() {
+import Routes from './routes';
+import { BrowserRouter } from 'react-router-dom';
+
+import Header from './components/header';
+
+
+export default function App() {
   return (
-      <CharacterList />
+      <BrowserRouter> 
+        <Header />
+        <Routes />
+      </BrowserRouter>
   );
 }
 
-export default App;
