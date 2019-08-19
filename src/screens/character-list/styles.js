@@ -43,7 +43,13 @@ export const Column = styled.div`
 `;
 
 export const Grid = styled.div`
-  
+
 `;
 
-export const SubTitle = styled.h3``;
+export const SubTitle = styled.h3`
+    font-family: inherit;
+    text-align: center;
+    font-size: 2rem;
+    text-aligin: center;
+    text-weight: bold;
+`;
