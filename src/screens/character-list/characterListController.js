@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getAllCharacters } from '../../services/data/data.service';
 import CharacterListView from './characterListView';
-import { withRouter } from 'react-router-dom' 
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as CharacterActions from '../../actions'
 
@@ -19,7 +19,7 @@ class CharacterListController extends Component {
     }
 
     editCharacter = char => {
-        console.log(char)
+        console.info(char)
         this.props.editCharacter(char)
         this.props.history.push('/editCharacter');
     }
@@ -27,16 +27,16 @@ class CharacterListController extends Component {
     showDetails = id => {
         this.props.showCharacterDetails(id)
         this.props.history.push(`/character`)
-    } 
+    }
 
-     loadData = async () => {
+    loadData = async () => {
         await getAllCharacters().then( data => {
             if(data) {
                 this.setState({
                     characters: data
                 })
             }
-        }) 
+        })
 
     }
 

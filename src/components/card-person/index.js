@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container, Avatar, Name } from './styles';
 
-export default function CardPerson({person, showDetails}) {
+export default function CardPerson({person, showDetails, editPerson}) {
 
   return (
     <Container>
@@ -11,7 +11,9 @@ export default function CardPerson({person, showDetails}) {
         onClick={() => showDetails(person['id'])}>
         </Avatar>
         <Name>{person['name']}</Name>
-        <p>Edit</p>
+        <p
+        onClick={() => editPerson(person)}
+        >Edit</p>
     </Container>
   );
 }
