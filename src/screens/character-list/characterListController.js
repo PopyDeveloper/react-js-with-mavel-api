@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getAllCharacters } from '../../services/data/data.service';
 import CharacterListView from './characterListView';
 import { withRouter } from 'react-router-dom'
@@ -6,43 +6,31 @@ import { connect } from 'react-redux'
 import * as CharacterActions from '../../actions'
 
 
-class CharacterListController extends Component {
-    constructor() {
-        super()
-        this.state = {
-            characters: []
-        }
+const CharacterListController = (props) =>  {
+
+    const [characters, setCharacters] = useState([]);
+    
+    useEffect(() => {
+        loadData();
+    }, [])
+
+
+    const editCharacter = char => {
+        props.editCharacter(char)
+        props.history.push('/editCharacter');
     }
 
-    componentDidMount() {
-        this.loadData();
+    const showDetails = id => {
+        props.showCharacterDetails(id)
+        props.history.push(`/character`)
     }
 
-    editCharacter = char => {
-        console.info(char)
-        this.props.editCharacter(char)
-        this.props.history.push('/editCharacter');
+    const loadData = async () => {
+        await getAllCharacters().then(setCharacters)
     }
 
-    showDetails = id => {
-        this.props.showCharacterDetails(id)
-        this.props.history.push(`/character`)
-    }
-
-    loadData = async () => {
-        await getAllCharacters().then( data => {
-            if(data) {
-                this.setState({
-                    characters: data
-                })
-            }
-        })
-
-    }
-
-    render() {
-        return <CharacterListView showDetail={id => this.showDetails(id)} editChar={char => this.editCharacter(char)} loadMoreCharacter={() => this.loadMoreCharacters()} {...this.state}  />
-    }
+    
+        return <CharacterListView showDetail={id => showDetails(id)} editChar={char => editCharacter(char)} characters={characters}  />
 }
 
 const mapDispatchToProps = dispatch => ({

@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { SubTitle, Container, Row, Column } from './styles';
 
 const CharacterListView = (props) => {
+    console.info(props)
     const {characters, editChar, showDetail } = props;
 
     return (

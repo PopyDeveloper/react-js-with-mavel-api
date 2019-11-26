@@ -1,46 +1,43 @@
-import React, {Component} from 'react'
+import React, { useState, useEffect } from 'react'
 import DetailsCharacterView from './detailsCharacterView';
 import { getSeries, getDetailsCharacter } from '../../services/data/data.service';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-class DetailsCharacterController extends Component {
+const DetailsCharacterController = props => {
 
-    constructor(props) {
-        super(props);
+    console.info(props)
+    const [id, setId] = useState(null);
+    const [data, setData] = useState(null);
 
-        console.info(this.props)
+    useEffect(() => {
+        _setId(props)
+        loadSeries(id)
+        loadDetailsPerson(id)
+    },[props, id])
+    
+    const _setId = props => setId(props['id'])
+
+    const loadSeries = async (id) => {
+        if(!id) return;
+
+        await getSeries(id)
+            .then(setData)
+            .catch(err => console.error(err))
     }
 
-    componentDidMount() {
-        const { id } = this.props;
-        this.loadSeries(id)
-        this.loadDetailsPerson(id)
+    const loadDetailsPerson = async (id) => {
+        if(!id) return;
+        await getDetailsCharacter(id)
+            .then(setData)
+            .catch(err => console.error(err))
     }
 
-    loadSeries = async (id) => {
-        await getSeries(id).then(data => {
-            this.setState({
-                series: data
-            })
-        })
-    }
-
-    loadDetailsPerson = async (id) => {
-        await getDetailsCharacter(id).then(data => {
-            this.setState({
-                details: data
-            })
-        })
-    }
-
-    render() {
-        return <DetailsCharacterView {...this.state} />
-    }
+        return <DetailsCharacterView data={data} />
 }
 
-const mapStateToProps = state => ({
-    id: state
+const mapStateToProps = id => ({
+    id
 });
 
 export default withRouter(connect(mapStateToProps)(DetailsCharacterController));
