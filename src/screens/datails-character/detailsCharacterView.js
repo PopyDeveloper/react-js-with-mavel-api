@@ -1,10 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Container, Row, Column } from './styles';
+import { Container, Row } from './styles';
 
 const DetailsCharacterView = (props) => {
-    const { series, classes, details, thumbnail } = props;
-    console.info('My Props', props)
+    const { details } = props;
     return (
 
         <Container>
@@ -19,7 +18,7 @@ const DetailsCharacterView = (props) => {
             {
                 <Row>
                 series && (
-                    series.length > 0 ? (
+                    {/* series.length > 0 ? (
                             series.map(serie =>
                                 <Column key={serie['id']}>
 
@@ -28,7 +27,7 @@ const DetailsCharacterView = (props) => {
                             </Column>)
                         ) : (
                             <p className={classes.load}>CARREGANDO...</p>
-                        )
+                        ) */}
                 )
                 </Row>
                 }
