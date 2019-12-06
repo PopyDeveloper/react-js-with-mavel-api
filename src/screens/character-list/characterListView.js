@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom'
 import { SubTitle, Container, Row, Column } from './styles';
 
 const CharacterListView = (props) => {
-    console.info(props)
     const {characters, editChar, showDetail } = props;
 
     return (
@@ -19,7 +18,7 @@ const CharacterListView = (props) => {
                     <Row>
                         { characters.map(char =>
                                 <Column grid='3' key={String(char.id)}>
-                                    <CardPerson person={char} showDetails={showDetail} editPerson={editChar}/>
+                                    <CardPerson person={char} showDetails={() => showDetail(char)} editPerson={editChar}/>
                                 </Column>
                         )}
                     </Row>

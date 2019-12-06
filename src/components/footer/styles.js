@@ -6,8 +6,7 @@ export const Container = styled.div`
     color: white;
     height: 140px;
     padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    position: absolute;
+    bottom: -1;
+    width: 100%;
 `;

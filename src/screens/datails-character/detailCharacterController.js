@@ -1,43 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import React, {
+    useState,
+    useEffect
+} from 'react'
 import DetailsCharacterView from './detailsCharacterView';
-import { getSeries, getDetailsCharacter } from '../../services/data/data.service';
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import {
+    connect
+} from 'react-redux'
+import {
+    withRouter
+} from 'react-router-dom'
 
-const DetailsCharacterController = props => {
+import { getSeries } from '../../services/data/data.service';
 
-    console.info(props)
-    const [id, setId] = useState(null);
-    const [data, setData] = useState(null);
+const DetailsCharacterController = () => {
+
+    const [dataCharacter, setDataCharacter] = useState(null)
+    const [series, setSeries] = useState(null)
 
     useEffect(() => {
-        _setId(props)
-        loadSeries(id)
-        loadDetailsPerson(id)
-    },[props, id])
-    
-    const _setId = props => setId(props['id'])
+        loadData()
+    }, [])
+
+    useEffect(() => {
+        if(dataCharacter) {
+            loadSeries(dataCharacter['id'])
+        }
+    }, [dataCharacter])
+
+    const loadData = () => {
+        const dataStr = localStorage.getItem('charView');
+        setDataCharacter(JSON.parse(dataStr));
+    }
 
     const loadSeries = async (id) => {
         if(!id) return;
 
         await getSeries(id)
-            .then(setData)
+            .then(setSeries)
             .catch(err => console.error(err))
     }
 
-    const loadDetailsPerson = async (id) => {
-        if(!id) return;
-        await getDetailsCharacter(id)
-            .then(setData)
-            .catch(err => console.error(err))
-    }
-
-        return <DetailsCharacterView data={data} />
+    return <DetailsCharacterView data={dataCharacter} series={series} />
 }
 
-const mapStateToProps = id => ({
-    id
-});
 
-export default withRouter(connect(mapStateToProps)(DetailsCharacterController));
+export default withRouter(connect()(DetailsCharacterController));

@@ -7,10 +7,10 @@ export function handleEditCharacter (char) {
     }
 }
 
-export function showDetailCharacter (id) {
+export function showDetailCharacter (char) {
     return {
         type: constants.DETAIL_CHARACTER,
-        id
+        id: char.id
     }
 }
 
