@@ -8,7 +8,6 @@ import { SubTitle, Container, Row, Column } from './styles';
 
 import CardPerson from '../../components/card-person';
 
-
 const CharacterList = (props) => {
 
     const [characters, setCharacters] = useState([]);
@@ -17,10 +16,6 @@ const CharacterList = (props) => {
     useEffect(() => {
         loadData();
     }, [])
-
-    useEffect(() => {
-        localStorage.setItem('characters', JSON.stringify(characters))
-    }, [characters])
 
     const editCharacter = char => {
         dispatch(CharacterActions.handleEditCharacter(char))
@@ -37,13 +32,9 @@ const CharacterList = (props) => {
         await getAllCharacters().then(setCharacters)
     }
 
-
     return (
         <Container>
-
             <SubTitle>Personagens</SubTitle>
-
-
             {
                 characters &&
                 characters.length > 0 ? (
@@ -61,6 +52,5 @@ const CharacterList = (props) => {
         </Container>
     )
 }
-
 
 export default withRouter(CharacterList);
