@@ -1,11 +1,18 @@
 import React from 'react'
-import { View, Text } from 'react-native'
 
-export default function Serie ({ name, thumbnail }) {
+export default function Serie (props) {
+  const { data } = props;
+
   return (
-    <View>
-      <Text> {name}</Text>
-      <Text> {thumbnail['path']}</Text>
-    </View>
+    <>
+      {
+        data['title'] &&
+        <>
+          <h3>{data['title']}</h3>
+          <img src={`${data['thumbnail']['path']}.${data['thumbnail']['extension']}`} alt={data['title']}/>
+        </>
+      }
+
+    </>
   )
 }
