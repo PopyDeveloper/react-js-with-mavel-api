@@ -1,5 +1,5 @@
 import React from 'react';
-import CharacterListController from './screens/character-list';
+import CharacterList from './screens/character-list';
 import DetailCharacter from './screens/datails-character'
 import EditCharacterController from './screens/edit-character'
 import { Provider } from 'react-redux';
@@ -12,7 +12,7 @@ export default function Routes() {
     <Provider store={store}>
         <Router history={history}>
             <Switch >
-                <Route path="/" exact={true} component={CharacterListController} />
+                <Route path="/" exact={true} component={CharacterList} />
                 <Route path="/character" component={DetailCharacter} />
                 <Route path="/editCharacter" component={EditCharacterController} />
             </Switch>
