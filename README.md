@@ -11,10 +11,6 @@ Lista e edição de personagens da MARVEL, utilizando a API https://developer.ma
 - Styled Components
 - Material UI
 
-## Preview
-
-<> Loading ... </>
-
 ## Versão mobile
 
 <> Loading ... </>
